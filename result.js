@@ -99,8 +99,8 @@ function forward_chaining(database, rules, conflictMethod = "first") {
     let conflictSet = [];
 
     while (true) {
-        let rulesKeys = Object.keys(rules);
         let conflict = [];
+        let rulesKeys = Object.keys(rules);
 
         // get all possible rules to fire
         rulesKeys.forEach((key) => {
@@ -114,11 +114,12 @@ function forward_chaining(database, rules, conflictMethod = "first") {
 
         // select the rule appear to the conflict method
         if (conflictMethod == "first") {
-            conflictSet.push({ rules: conflict, selected: conflict[0] });
-            database.push(rules[conflict[0]]["right_side"]);
-            rules[conflict[0]]["left_side"].push("Used");
+            // select the first rule
+            conflictSet.push({ rules: conflict, selected: conflict[0] }); // save the conflict
+            database.push(rules[conflict[0]]["right_side"]); // add the rule right side to the database
+            rules[conflict[0]]["left_side"].push("Used"); // remove the used rule
         } else if (conflictMethod == "long") {
-            // looking fir the mos rule left side length index
+            // looking for the most rule left side length index
             let maxLength = 0;
             let maxIndex = 0;
 
@@ -131,9 +132,9 @@ function forward_chaining(database, rules, conflictMethod = "first") {
             });
 
             // select the most left side rule length
-            conflictSet.push({ rules: conflict, selected: conflict[maxIndex] });
-            database.push(rules[conflict[maxIndex]]["right_side"]);
-            rules[conflict[maxIndex]]["left_side"].push("Used");
+            conflictSet.push({ rules: conflict, selected: conflict[maxIndex] }); // save the conflict
+            database.push(rules[conflict[maxIndex]]["right_side"]); // add the rule right side to the database
+            rules[conflict[maxIndex]]["left_side"].push("Used"); // remove the used rule
         }
     }
 
@@ -141,31 +142,34 @@ function forward_chaining(database, rules, conflictMethod = "first") {
 }
 
 function backward_chaining(goal, database, rules, subGoalsList) {
+    // check if the goal is in the database
     if (list_contains(database, goal)) return true;
+
+    let conflict = [];
+    let result = false;
 
     let rulesKeys = Object.keys(rules);
 
-    let result = false;
-
-    let conflict = [];
+    // get all possible rules to get the goal
     rulesKeys.forEach((key) => {
         if (rules[key]["right_side"] == goal) {
             conflict.push(key);
         }
     });
 
+    // loop threw all the possible rules
     conflict.forEach((key) => {
-        if (result) return;
+        if (result) return; // stop when find one correct rule
 
         let test = true;
         rules[key]["left_side"].forEach((subGoal) => {
-            if (!test) return;
+            if (!test) return; // stop when find one sub goal not correct 
 
             subGoalsList.push({ subGoal });
             if (!backward_chaining(subGoal, database, rules, subGoalsList))
-                test = false;
+                test = false; // find a sub goal not correct
         });
-        if (test) result = true;
+        if (test) result = true; // if all sub goal are correct then the rule is correct
     });
 
     return result;
