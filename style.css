@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+    background: #09303d;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.expert-system {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+
+    position: relative;
+}
+
+.expert-system .pages-container {
+    margin-top: 20px;
+    padding: 10px 5px;
+
+    width: 90%;
+    max-width: 900px;
+    height: 90%;
+    background: #fff3;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.expert-system .pages-container .pages {
+    width: 500%;
+    height: 100%;
+
+    position: absolute;
+    left: 0;
+
+    display: flex;
+
+    transition: 0.5s;
+}
+
+.expert-system .pages-container .pages .page {
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+.expert-system .pages-container .pages .page::after {
+    content: "";
+    display: block;
+
+    width: 2px;
+    height: 80%;
+    background: #000;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.expert-system .pages-container .pages .page > * {
+    margin: 0 auto;
+}
+
+.expert-system .pages-container .pages .page:last-child .submit {
+    padding: 15px 25px;
+
+    border-radius: 10px;
+
+    font-size: 1.5rem;
+
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+}
+
+.expert-system .pages-container .pages .page .inputs-container {
+    width: 100%;
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+}
+
+.expert-system .pages-container .pages .page .inputs-container .left,
+.expert-system .pages-container .pages .page .inputs-container .right {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* the Third page have less content */
+.expert-system
+    .pages-container
+    .pages
+    .page:nth-child(5)
+    .inputs-container
+    .left {
+    margin: 0 auto;
+}
+
+.expert-system .pages-container .pages .page:nth-child(2)::after,
+.expert-system .pages-container .pages .page:nth-child(5)::after {
+    display: none;
+}
+/*  */
+
+.expert-system .pages-container .pages .page .property {
+    padding: 10px 3px 3px;
+    margin: 10px auto;
+
+    width: 90%;
+    border: 2px solid #000;
+    border-radius: 20px;
+
+    position: relative;
+}
+
+.expert-system .pages-container .pages .page .property > * {
+    margin: 0 auto;
+}
+
+.expert-system .pages-container .pages .page .property h3 {
+    padding: 3px;
+
+    width: max-content;
+    border-radius: 10px;
+    background: green;
+
+    text-transform: capitalize;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/*  */
+
+.expert-system .pages-container .pages .page .choices {
+    padding: 5px;
+    margin-bottom: 20px;
+
+    width: 90%;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.expert-system .pages-container .pages .page .choices .input {
+    margin-top: 5px;
+
+    width: 50%;
+
+    display: flex;
+    align-items: center;
+
+    /* transition: 0.3s; */
+}
+.expert-system .pages-container .pages .page .input input:checked ~ label,
+.expert-system .pages-container .pages .page .input:hover label {
+    color: orange;
+}
+
+.expert-system .pages-container .pages .page .input > * {
+    cursor: pointer;
+}
+
+.expert-system .pages-container .pages .page .input label {
+    margin-left: 5px;
+
+    font-weight: 700;
+    text-transform: capitalize;
+}
+/*  */
+
+.expert-system .pages-buttons {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    top: 89%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.expert-system .pages-buttons.hide {
+    display: none;
+}
+
+.expert-system .pages-buttons button {
+    padding: 10px 25px;
+
+    border-radius: 10px;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+
+    position: absolute;
+}
+.expert-system .pages-buttons button.back {
+    left: 5%;
+}
+.expert-system .pages-buttons button.next ,
+.expert-system .pages-buttons button.submit {
+    right: 5%;
+}
+.expert-system .pages-buttons.submit button.next{
+    display: none;
+}
+.expert-system .pages-buttons button.submit{
+    display: none;
+}
+.expert-system .pages-buttons.submit button.submit{
+    display: block;
+}
+/*  */
+
+.expert-system .pages-container .pages .page.search-method {
+    display: flex;
+    flex-direction: column;
+}
+.expert-system .pages-container .pages .page.search-method::after {
+    display: none;
+}
+
+.expert-system .pages-container .pages .page.search-method h3 {
+    margin-top: 100px;
+
+    font-size: 3rem;
+}
+
+.expert-system .pages-container .pages .page.search-method .container {
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+}
+.expert-system .pages-container .pages .page.search-method .container button {
+    padding: 10px 20px;
+    margin: 25px 0;
+
+    font-size: 2rem;
+    text-transform: capitalize;
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+/*  */
+.expert-system .pages-container .pages .page.backwards-gale h2 {
+    font-size: 1.8rem;
+}
+
+.expert-system .pages-container .pages .page.backwards-gale .property {
+    margin-top: 50px;
+}
+
+.expert-system .pages-container .pages .page.backwards-gale .choices .input {
+    width: 30%;
+}
