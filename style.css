@@ -7,7 +7,7 @@
 body {
     width: 100vw;
     min-height: 100vh;
-    background: #09303d;
+    background: #fff;
 
     display: flex;
     justify-content: center;
@@ -140,13 +140,14 @@ body {
 }
 
 .expert-system .pages-container .pages .page .property h3 {
-    padding: 3px;
+    padding: 5px 7px;
 
     width: max-content;
     border-radius: 10px;
     background: green;
 
     text-transform: capitalize;
+    color: #fff;
 
     position: absolute;
     top: 0;

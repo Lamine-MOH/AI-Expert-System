@@ -41,8 +41,6 @@ function getUrlParameters() {
 
 let urlPar = getUrlParameters();
 
-console.table(urlPar);
-
 function get_ideas(urlPar, guide) {
     let urlKeys = Object.keys(urlPar);
 
@@ -96,6 +94,22 @@ function copy_list(list) {
         copyList.push(element);
     });
     return copyList;
+}
+
+function copy_dict(dict) {
+    let copyDict = {};
+    let dictKeys = Object.keys(dict);
+
+    dictKeys.forEach((key) => {
+        copyDict[key] = {};
+        copyDict[key]["left_side"] = [];
+        copyDict[key]["right_side"] = dict[key]["right_side"];
+
+        dict[key]["left_side"].forEach((ele) => {
+            copyDict[key]["left_side"].push(ele);
+        });
+    });
+    return copyDict;
 }
 // ------------------------------------------------------------------- //
 
@@ -171,7 +185,7 @@ function backward_chaining(goal, database, rules, subGoalsList) {
 
         let test = true;
         rules[key]["left_side"].forEach((subGoal) => {
-            if (!test) return; // stop when find one sub goal not correct 
+            if (!test) return; // stop when find one sub goal not correct
 
             subGoalsList.push({ subGoal });
             if (!backward_chaining(subGoal, database, rules, subGoalsList))
