@@ -90,11 +90,19 @@ function list_contains_list(list, sub_list) {
     return result;
 }
 
+function copy_list(list) {
+    let copyList = [];
+    list.forEach((element) => {
+        copyList.push(element);
+    });
+    return copyList;
+}
+// ------------------------------------------------------------------- //
+
 let database = get_ideas(urlPar, information["guide"]);
 let rules = information["rules"];
 
-console.table(database);
-
+// ------------------------------------------------------------------- //
 function forward_chaining(database, rules, conflictMethod = "first") {
     let conflictSet = [];
 
@@ -174,5 +182,3 @@ function backward_chaining(goal, database, rules, subGoalsList) {
 
     return result;
 }
-let sss = [];
-console.log(backward_chaining("r4", [16, 35, 5], rules, sss));

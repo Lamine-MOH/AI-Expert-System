@@ -10,9 +10,146 @@
 
 </head>
 <body>
+
+    <section class="result">
+        <div class="forward-chaining">
+            <h2>forwards chaining</h2>
+
+            <div class="first-method">
+                <h3>conflict first method</h3>
+
+                <div class="container">
+                    <div class="data-base">
+                        <h4>database</h4>
+
+                        <div class="facts">
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                        </div>
+                    </div>
+
+                    <div class="conflict-set">
+                        <h4>conflict set</h4>
+
+                        <div class="conflicts-container">
+                            <div class="conflict">
+                                <div class="possible-rules">
+                                    <span>r1</span>
+                                    <span>r1</span>
+                                    <span>r1</span>
+                                    <span>r1</span>
+                                </div>
+
+                                <div class="selected-rule">
+                                    <p>Selected Rule is:</p>
+                                    <span>r2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="long-method">
+                <h3>conflict long method</h3>
+
+                <div class="container">
+                    <div class="data-base">
+                        <h4>database</h4>
+
+                        <div class="facts">
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                        </div>
+                    </div>
+
+                    <div class="conflict-set">
+                        <h4>conflict set</h4>
+
+                        <div class="conflicts-container">
+                            <div class="conflict">
+                                <div class="possible-rules">
+                                    <span>r1</span>
+                                    <span>r1</span>
+                                    <span>r1</span>
+                                    <span>r1</span>
+                                </div>
+
+                                <div class="selected-rule">
+                                    <p>Selected Rule is:</p>
+                                    <span>r2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="backward-chaining">
+            <h2>backwards chaining</h2>
+
+            <div class="result">
+                <p>The goal</p>
+                <span>r2</span>
+                <br>
+
+                <p>Cant be reach</p>
+            </div>
+
+            <div class="information">
+                <h3>conflict first method</h3>
+
+                <div class="container">
+                    <div class="data-base">
+                        <h4>database</h4>
+
+                        <div class="facts">
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                            <span>r2</span>
+                        </div>
+                    </div>
+
+                    <div class="conflict-set">
+                        <h4>conflict set</h4>
+
+                        <div class="conflicts-container">
+                            <div class="conflict">
+                                <div class="possible-rules">
+                                    <span>r1</span>
+                                    <span>r1</span>
+                                    <span>r1</span>
+                                    <span>r1</span>
+                                </div>
+
+                                <div class="selected-rule">
+                                    <p>Selected Rule is:</p>
+                                    <span>r2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
     
     <script src="rules.js"></script>
     <script src="result.js"></script>
+    <script src="style.js"></script>
 
 </body>
 </html>
